@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">E-Point</string>
+    <string name="user">Username</string>
+    <string name="pass">Password</string>
+    <string name="login">Sign In</string>
+    <string name="register">Sign Up</string>
+    <string name="success">Welcome</string>
+    <string name="logout">Logout</string>
+    <string name="catat">Catat</string>
+    <string name="ketcatat">Form mencatat pelanggaran</string>
+    <string name="laporan">Laporan</string>
+    <string name="ketlaporan">Laporan pencatatan pelanggaran</string>
+    <string name="help">Bantuan</string>
+    <string name="kethelp">Penjelasan mengenai Aplikasi</string>
+    <string name="about">Tentang Kami</string>
+    <string name="ketabout">Berisi biodata Pengembang</string>
+</resources>
