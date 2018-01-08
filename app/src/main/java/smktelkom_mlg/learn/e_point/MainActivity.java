@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity implements View.OnClickListener {
-    Button logout;
 
     private CardView catatC, laporanC, helpC, aboutC, logoutC;
 
@@ -30,9 +29,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         aboutC.setOnClickListener(this);
         logoutC.setOnClickListener(this);
 
-        logout = (Button) findViewById(R.id.logout);
-
-        logout.setOnClickListener(new View.OnClickListener() {
+        logoutC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
@@ -51,7 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Intent i;
 
         switch (v.getId()) {
-
+            case R.id.catat_card : i = new Intent(this,Catat.class);startActivity(i);break;
         }
 
     }

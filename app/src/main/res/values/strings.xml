@@ -2,7 +2,7 @@
     <string name="app_name">E-Point</string>
     <string name="user">Username</string>
     <string name="pass">Password</string>
-    <string name="login">Sign In</string>
+    <string name="login">SIGN IN</string>
     <string name="register">Sign Up</string>
     <string name="success">Welcome</string>
     <string name="logout">Logout</string>
