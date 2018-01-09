@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.Button;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
@@ -49,6 +48,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.catat_card : i = new Intent(this,Catat.class);startActivity(i);break;
+            case R.id.help_card:
+                i = new Intent(this, Help.class);
+                startActivity(i);
+                break;
         }
 
     }

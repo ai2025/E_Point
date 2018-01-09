@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".Catat" />
-        <activity android:name=".Laporan"></activity>
+        <activity android:name=".Laporan" />
+        <activity android:name=".Help" />
     </application>
 
 </manifest>
