@@ -3,14 +3,18 @@ package smktelkom_mlg.learn.e_point;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -29,15 +33,38 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 @SuppressLint("NewApi")
 public class Catat extends Activity {
+    //datepicker start
+    private DatePicker datePicker;
+    private Calendar calendar;
+    private TextView dateView;
+    private int year, month, day;
+    //dp end
+    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+            showDate(arg1, arg2 + 1, arg3);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catat);
+
+        //dp start
+        dateView = (TextView) findViewById(R.id.tvShowDate);
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        showDate(year, month + 1, day);
+        //end
+
         // Permission StrictMode
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -112,6 +139,27 @@ public class Catat extends Activity {
         }
 
     }
+
+    //dp start
+    @SuppressWarnings("deprecation")
+    public void setDate(View view) {
+        showDialog(999);
+        Toast.makeText(getApplicationContext(), "ca",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        if (id == 999) {
+            return new DatePickerDialog(this, myDateListener, year, month, day);
+        }
+        return null;
+    }
+
+    private void showDate(int year, int month, int day) {
+        dateView.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
+    }
+    //end
 
     public String getJSONUrl(String url) {
         StringBuilder str = new StringBuilder();
