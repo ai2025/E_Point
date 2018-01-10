@@ -18,13 +18,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         catatC = (CardView) findViewById(R.id.catat_card);
         laporanC = (CardView) findViewById(R.id.laporan_card);
-        helpC = (CardView) findViewById(R.id.help_card);
+        /*helpC = (CardView) findViewById(R.id.help_card);*/
         aboutC = (CardView) findViewById(R.id.about_card);
         logoutC = (CardView) findViewById(R.id.logout_card);
 
         catatC.setOnClickListener(this);
         laporanC.setOnClickListener(this);
-        helpC.setOnClickListener(this);
+        /*helpC.setOnClickListener(this);*/
         aboutC.setOnClickListener(this);
         logoutC.setOnClickListener(this);
 
@@ -48,10 +48,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.catat_card : i = new Intent(this,Catat.class);startActivity(i);break;
-            case R.id.help_card:
-                i = new Intent(this, Help.class);
-                startActivity(i);
-                break;
+            /*case R.id.help_card: i = new Intent(this, Help.class);startActivity(i);break;*/
+
         }
 
     }
