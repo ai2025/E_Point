@@ -22,7 +22,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Catat" />
         <activity android:name=".Laporan" />
-        <activity android:name=".Help" />
+        <activity android:name=".About" />
     </application>
 
 </manifest>

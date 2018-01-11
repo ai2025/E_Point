@@ -7,6 +7,7 @@
     <color name="grey">#F5F5F5</color>
     <color name="darkergrey">#898989</color>
     <color name="white">#FFFFFF</color>
+    <color name="PriDark">#2f333f</color>
 
     <!-- Screens background color-->
     <color name="bg_screen1">#f64c73</color>

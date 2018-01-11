@@ -48,7 +48,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.catat_card : i = new Intent(this,Catat.class);startActivity(i);break;
-            /*case R.id.help_card: i = new Intent(this, Help.class);startActivity(i);break;*/
+            case R.id.about_card:
+                i = new Intent(this, About.class);
+                startActivity(i);
+                break;
 
         }
 
