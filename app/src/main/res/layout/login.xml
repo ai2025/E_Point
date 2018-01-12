@@ -12,13 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="30dp"
+        android:background="@drawable/backlogo"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:src="@drawable/catat" />
+            android:src="@drawable/logo" />
 
     </LinearLayout>
 
@@ -61,7 +62,7 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/btnstylestrokewhite"
             android:elevation="10dp"
