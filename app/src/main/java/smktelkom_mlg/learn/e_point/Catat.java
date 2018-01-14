@@ -81,7 +81,7 @@ public class Catat extends Activity {
         String url = "http://10.0.2.2/spinner3/getData.php";
 
         //spinner2
-        String url2 = "http://10.0.2.2/spinner3/getDataJns.php";
+        String url2 = "http://10.0.2.2/spinner3/getData2.php";
 
         //spinner1
         try {
