@@ -74,8 +74,16 @@ public class Catat extends Activity {
         // spinner1
         final Spinner spin = (Spinner) findViewById(R.id.spinner1);
 
+        //spinner2
+        final Spinner spin2 = (Spinner) findViewById(R.id.spinner2);
+
+        //spinner1
         String url = "http://10.0.2.2/spinner3/getData.php";
 
+        //spinner2
+        String url2 = "http://10.0.2.2/spinner3/getDataJns.php";
+
+        //spinner1
         try {
 
             JSONArray data = new JSONArray(getJSONUrl(url));
@@ -106,8 +114,7 @@ public class Catat extends Activity {
                                            int position, long id) {
                     //String id_siswa = MyArrList.get(position).get("id_siswa").toString();
                     //String nis = MyArrList.get(position).get("nis").toString();
-                    String nama = MyArrList.get(position).get("nama")
-                            .toString();
+                    String nama = MyArrList.get(position).get("nama");
 
                     /*viewDetail.setIcon(android.R.drawable.btn_star_big_on);
                     viewDetail.setTitle("Siswa");
@@ -137,6 +144,74 @@ public class Catat extends Activity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+        //spinner2
+        try {
+
+            JSONArray data = new JSONArray(getJSONUrl(url2));
+
+            final ArrayList<HashMap<String, String>> MyArrList2 = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> map;
+
+            for (int i = 0; i < data.length(); i++) {
+                JSONObject c = data.getJSONObject(i);
+
+                map = new HashMap<String, String>();
+                //map.put("id_siswa", c.getString("id_siswa"));
+                //map.put("nis", c.getString("nis"));
+                map.put("nama_pelanggaran", c.getString("nama_pelanggaran"));
+                map.put("poin", c.getString("poin"));
+                MyArrList2.add(map);
+
+            }
+            SimpleAdapter sAdapt;
+            sAdapt = new SimpleAdapter(Catat.this, MyArrList2, R.layout.activity_show2,
+                    new String[]{/*"id_siswa", "nis",*/ "nama_pelanggaran", "poin"}, new int[]{/*R.id.ColID, R.id.ColNis,*/ R.id.ColJenis, R.id.ColPoin});
+            spin2.setAdapter(sAdapt);
+
+            final AlertDialog.Builder viewDetail = new AlertDialog.Builder(this);
+
+            spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                public void onItemSelected(AdapterView<?> arg0, View selectedItemView,
+                                           int position, long id) {
+                    //String id_siswa = MyArrList.get(position).get("id_siswa").toString();
+                    //String nis = MyArrList.get(position).get("nis").toString();
+                    String nama = MyArrList2.get(position).get("nama");
+
+                    /*viewDetail.setIcon(android.R.drawable.btn_star_big_on);
+                    viewDetail.setTitle("Siswa");
+                    viewDetail.setMessage("Id Siswa : " + id_siswa + "\n"
+                            + "Nis : " + nis + "\n" + "Nama : " + nama);
+                    viewDetail.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    // TODO Auto-generated method stub
+                                    dialog.dismiss();
+                                }
+                            });
+                    viewDetail.show();*/
+
+                }
+
+                public void onNothingSelected(AdapterView<?> arg0) {
+                    // TODO Auto-generated method stub
+                    Toast.makeText(Catat.this,
+                            "Your Selected : Nothing",
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        //end
+
+        //spinner2 poin
+
+        //end
 
     }
 

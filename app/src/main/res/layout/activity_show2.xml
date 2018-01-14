@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayout1"
+    android:id="@+id/linearLayout2"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,13 +13,21 @@
         android:padding="15dp">
 
         <TextView
-            android:id="@+id/ColNama"
+            android:id="@+id/ColJenis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_weight="1"
-            android:text="Nama"
+            android:text="Jenis"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ColPoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ColJenis"
+            android:layout_weight="1"
+            android:text="poin" />
 
     </RelativeLayout>
 
