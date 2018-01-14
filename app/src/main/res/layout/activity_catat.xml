@@ -59,7 +59,7 @@
             <Spinner
                 android:id="@+id/spinner1"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/tvNama"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="20dp"
@@ -79,7 +79,7 @@
             <Spinner
                 android:id="@+id/spinner2"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/tvJenis"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="20dp"
