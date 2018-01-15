@@ -11,11 +11,20 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -35,9 +44,17 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 @SuppressLint("NewApi")
 public class Catat extends Activity {
+
+    Spinner nama, nama_pelanggaran;
+    TextView tanggal;
+    Button simpan;
+    RequestQueue requestQueue;
+    String insertUrl = "http://10.0.2.2/epoin/insertData.php";
+
     //datepicker start
     private DatePicker datePicker;
     private Calendar calendar;
@@ -56,6 +73,15 @@ public class Catat extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catat);
 
+        nama = (Spinner) findViewById(R.id.spinner1);
+        nama_pelanggaran = (Spinner) findViewById(R.id.spinner2);
+        //tanggal = (TextView) findViewById(R.id.tvShowDate);
+        simpan = (Button) findViewById(R.id.btn_simpan);
+
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+
+
         //dp start
         dateView = (TextView) findViewById(R.id.tvShowDate);
         calendar = Calendar.getInstance();
@@ -73,15 +99,17 @@ public class Catat extends Activity {
 
         // spinner1
         final Spinner spin = (Spinner) findViewById(R.id.spinner1);
+        //String nama = spin.getSelectedItem().toString();
 
         //spinner2
         final Spinner spin2 = (Spinner) findViewById(R.id.spinner2);
+        //String nama_pelanggaran = spin2.getSelectedItem().toString();
 
         //spinner1
-        String url = "http://10.0.2.2/spinner3/getData.php";
+        String url = "http://10.0.2.2/epoin/getDataSiswa.php";
 
         //spinner2
-        String url2 = "http://10.0.2.2/spinner3/getData2.php";
+        String url2 = "http://10.0.2.2/epoin/getDataJenis.php";
 
         //spinner1
         try {
@@ -213,6 +241,33 @@ public class Catat extends Activity {
 
         //end
 
+        simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StringRequest request = new StringRequest(Request.Method.POST, insertUrl, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> parameters = new HashMap<String, String>();
+                        parameters.put("nama", nama.getSelectedItem().toString());
+                        parameters.put("nama_pelanggaran", nama_pelanggaran.getSelectedItem().toString());
+                        parameters.put("tanggal", dateView.getText().toString());
+
+                        return parameters;
+                    }
+                };
+                requestQueue.add(request);
+            }
+        });
     }
 
     //dp start

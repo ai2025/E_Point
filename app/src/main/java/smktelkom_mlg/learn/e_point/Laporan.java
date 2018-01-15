@@ -22,7 +22,7 @@ import java.util.List;
 
 public class Laporan extends AppCompatActivity {
 
-    private final String url = "http://10.0.3.2/laporan/getData.php";
+    private final String url = "http://10.0.3.2/epoin/getDataLaporan.php";
     RecyclerView mRecyclerview;
     RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager mManager;
