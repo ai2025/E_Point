@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -50,6 +51,7 @@ import java.util.Map;
 public class Catat extends Activity {
 
     Spinner nama, nama_pelanggaran;
+    String vNama, vNamapel;
     TextView tanggal;
     Button simpan;
     RequestQueue requestQueue;
@@ -142,7 +144,7 @@ public class Catat extends Activity {
                                            int position, long id) {
                     //String id_siswa = MyArrList.get(position).get("id_siswa").toString();
                     //String nis = MyArrList.get(position).get("nis").toString();
-                    String nama = MyArrList.get(position).get("nama");
+                    vNama = MyArrList.get(position).get("nama");
 
                     /*viewDetail.setIcon(android.R.drawable.btn_star_big_on);
                     viewDetail.setTitle("Siswa");
@@ -205,7 +207,7 @@ public class Catat extends Activity {
                                            int position, long id) {
                     //String id_siswa = MyArrList.get(position).get("id_siswa").toString();
                     //String nis = MyArrList.get(position).get("nis").toString();
-                    String nama = MyArrList2.get(position).get("nama");
+                    vNamapel = MyArrList2.get(position).get("nama_pelanggaran");
 
                     /*viewDetail.setIcon(android.R.drawable.btn_star_big_on);
                     viewDetail.setTitle("Siswa");
@@ -244,28 +246,35 @@ public class Catat extends Activity {
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final ProgressDialog progressDialog = ProgressDialog.show(Catat.this, "", "Menyimpan....");
+
                 StringRequest request = new StringRequest(Request.Method.POST, insertUrl, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        progressDialog.dismiss();
+                        Log.d("res", response.toString());
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        progressDialog.dismiss();
+                        Log.e("reponError", error.getMessage());
                     }
                 }) {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> parameters = new HashMap<String, String>();
-                        parameters.put("nama", nama.getSelectedItem().toString());
-                        parameters.put("nama_pelanggaran", nama_pelanggaran.getSelectedItem().toString());
+                        parameters.put("nama", vNama);
+                        parameters.put("nama_pelanggaran", vNamapel);
                         parameters.put("tanggal", dateView.getText().toString());
 
                         return parameters;
                     }
                 };
                 requestQueue.add(request);
+                Log.d("Test", vNama);
+                Log.d("Test", vNamapel);
+                Log.d("Test", dateView.getText().toString());
             }
         });
     }
@@ -274,8 +283,6 @@ public class Catat extends Activity {
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
         showDialog(999);
-        Toast.makeText(getApplicationContext(), "ca",
-                Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -287,7 +294,7 @@ public class Catat extends Activity {
     }
 
     private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
+        dateView.setText(new StringBuilder().append(year).append("-").append(month).append("-").append(day));
     }
     //end
 
