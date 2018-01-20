@@ -23,6 +23,7 @@
         <activity android:name=".Catat" />
         <activity android:name=".Laporan" />
         <activity android:name=".About" />
+        <activity android:name=".Update"></activity>
     </application>
 
 </manifest>

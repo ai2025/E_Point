@@ -5,17 +5,26 @@ package smktelkom_mlg.learn.e_point;
  */
 
 public class ModelList {
-    String nama, nama_kategori, nama_pelanggaran, tanggal, poin;
+    String id_laporan, nama, nama_kategori, nama_pelanggaran, tanggal, poin;
 
     public ModelList() {
     }
 
-    public ModelList(String nama, String nama_kategori, String nama_pelanggaran, String tanggal, String poin) {
+    public ModelList(String id_laporan, String nama, String nama_kategori, String nama_pelanggaran, String tanggal, String poin) {
+        this.id_laporan = id_laporan;
         this.nama = nama;
         this.nama_kategori = nama_kategori;
         this.nama_pelanggaran = nama_pelanggaran;
         this.tanggal = tanggal;
         this.poin = poin;
+    }
+
+    public String getId_laporan() {
+        return id_laporan;
+    }
+
+    public void setId_laporan(String id_laporan) {
+        this.nama = id_laporan;
     }
 
     public String getNama() {
